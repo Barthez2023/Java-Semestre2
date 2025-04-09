@@ -83,6 +83,6 @@ L'ajout de cette bibliotheque nous permet de manipuler les fichier exceld e la m
         cell8.setCellValue("Adress     ");          // idem colonne 8
         cell9.setCellValue("Ilgi     ");            // idem colonne 9
 
-et ainsi de suite on creer une ligne apres on creer une colonne et on ajoute des elemnts aux colonnes.
+et ainsi de suite on creer une ligne apres on creer une colonne et on ajoute des elements aux colonnes.
         
         
