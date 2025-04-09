@@ -1,0 +1,21 @@
+il//35//izmir
+ilce//35//buca
+ilce//35//karsiyaka
+il//1//adana
+il//2//adıyaman
+ilce//34//kasımpaşa
+il//6//ankara
+il//34//istanbul
+ilce//1//pozantı
+ilce//1//aladağ
+ilce//1//feke
+ilce//6//sincan
+ilce//6//etimesgut
+ilce//6//yenimahalle
+ilgi//müzik dinlemek
+ilgi//resim çizmek
+ilgi//tv seyretmek
+ilce//34//bakırköy
+ilce//34//beyoglu
+ilgi//futbol oynamak
+ilce//2//kahta
