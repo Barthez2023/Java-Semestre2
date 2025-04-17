@@ -84,5 +84,16 @@ L'ajout de cette bibliotheque nous permet de manipuler les fichier exceld e la m
         cell9.setCellValue("Ilgi     ");            // idem colonne 9
 
 et ainsi de suite on creer une ligne apres on creer une colonne et on ajoute des elemnts aux colonnes.
+
+
+
+Nous avons gerer les 3 boutton kaydet-info qui permet d'enreigistrer les infos dans un fichier enreigistrement l'utilisateur aura la 
+possibilite de choisi le fichier ou ser aenreigistre ces donnes garce a 
+jFileChooser1.setCurrentDirectory(new File("C:\\Users\\PC\\Desktop\\github1\\Java-Semestre2\\SystenEnregistre"));
+        if(jFileChooser1.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+            try {}
+}
+et boutton Ac qui permet de recupere les donnes dans ce fichier de leurs remettre a leur differentes place dans la feuille d'enreigistrement
+le boutton Cikis qui permet de fermer la fenetre d'enreigistrement
         
         

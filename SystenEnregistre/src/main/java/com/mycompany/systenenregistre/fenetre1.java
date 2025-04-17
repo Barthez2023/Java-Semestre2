@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileNotFoundException;    
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,6 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
+import javax.swing.JFileChooser;
 /**
  *
  * @author PC
@@ -57,6 +58,7 @@ public class fenetre1 extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        jFileChooser1 = new javax.swing.JFileChooser();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -88,6 +90,7 @@ public class fenetre1 extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -300,6 +303,11 @@ public class fenetre1 extends javax.swing.JFrame {
         jMenu1.setText("Dosya");
 
         jMenuItem3.setText("Ac");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setText("Kaydet");
@@ -310,7 +318,20 @@ public class fenetre1 extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
+        jMenuItem10.setText("Kaydet_info");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem10);
+
         jMenuItem5.setText("Cikis");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -694,6 +715,160 @@ public class fenetre1 extends javax.swing.JFrame {
         jFrame1.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        jFileChooser1.setCurrentDirectory(new File("C:\\Users\\PC\\Desktop\\github1\\Java-Semestre2\\SystenEnregistre"));
+        if(jFileChooser1.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
+            try {
+                FileWriter fw =new FileWriter(jFileChooser1.getSelectedFile().getAbsolutePath(),false);
+                BufferedWriter bw =new BufferedWriter(fw);
+                bw.write("Ad//"+jTextField1.getText()+"\n");
+                bw.newLine();
+                bw.write("Soyad//"+jTextField2.getText()+"\n");        
+                bw.newLine();
+                bw.write("Telefon//"+jFormattedTextField1.getText()+"\n");
+                bw.newLine();
+                bw.write("Adress//"+jTextArea1.getText().replace("\n", "\t")+"\n");
+                bw.newLine();
+                String Kangrubu="";
+                if(jCheckBox1.isSelected()){
+                    Kangrubu="A";
+                }
+                if(jCheckBox2.isSelected()){
+                    Kangrubu= Kangrubu+"B";
+                }
+                if(jCheckBox3.isSelected()){
+                    Kangrubu="AB";
+                }
+                if(jCheckBox4.isSelected()){
+                    Kangrubu= "O";
+                }
+                if(jCheckBox5.isSelected()){
+                    Kangrubu= Kangrubu+" Rh+";
+                }
+                if(jCheckBox6.isSelected()){
+                    Kangrubu= Kangrubu+" Rh-";
+                }
+                bw.write("Kan Grubu//"+Kangrubu+"\n");
+                bw.newLine();
+                int seciler[];
+                seciler=jList1.getSelectedIndices();
+                String secil="";
+                for(int i=0;i<seciler.length;i++){
+                    secil+=seciler[i]+"//";
+                }
+                bw.write("Ilgi//"+secil+"\n");
+                bw.newLine();
+                if(jRadioButton1.isSelected()){
+                    bw.write("Durum//1\n");
+                    bw.newLine();
+                }
+                if(jRadioButton2.isSelected()){
+                    bw.write("Durum//2\n");
+                    bw.newLine();
+                }
+                bw.write("Il//"+jComboBox1.getSelectedIndex()+"\n");
+                bw.newLine();
+                bw.write("Ilce//"+jComboBox2.getSelectedIndex()+"\n");
+                bw.newLine();
+                bw.close();
+                JOptionPane.showMessageDialog(this, "Kayit basari gerceklestir!!!!", "Kayit", JOptionPane.INFORMATION_MESSAGE);
+                
+                //reinitialisation de la fiche d'enreigistrement
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jFormattedTextField1.setText("");
+                jTextArea1.setText("");
+                jCheckBox1.setSelected(false);
+                jCheckBox2.setSelected(false);
+                jCheckBox3.setSelected(false);
+                jCheckBox4.setSelected(false);
+                buttonGroup2.clearSelection();  //permet de deselectionner les selections des jboutton
+                buttonGroup1.clearSelection();  //permet de deselectionner les selections des jboutton
+                jComboBox1.setSelectedIndex(0);
+                jComboBox2.setSelectedIndex(0);
+            } catch (IOException ex) {
+                Logger.getLogger(fenetre1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        jFileChooser1.setCurrentDirectory(new File("C:\\Users\\PC\\Desktop\\github1\\Java-Semestre2\\SystenEnregistre"));
+        if(jFileChooser1.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+            try {
+                FileReader fr =new FileReader(jFileChooser1.getSelectedFile().getAbsolutePath());
+                BufferedReader br =new BufferedReader(fr);
+                String line =br.readLine();
+                while(line!=null){
+                    String[] parca=line.split("//");
+                    switch(parca[0]){
+                        case "Ad":
+                            jTextField1.setText(parca[1]);
+                            break;
+                        case "Soyad":
+                            jTextField2.setText(parca[1]);
+                            break;
+                        case "Telefon":
+                            jFormattedTextField1.setText(parca[1]);
+                            break;
+                        case "Adress":
+                            jTextArea1.setText(parca[1].replace("\t", "\n"));
+                            break;
+                        case "Kan Grubu":
+                            if(parca[1].contains("A")){
+                                jCheckBox1.setSelected(true);
+                            }
+                            if(parca[1].contains("B")){
+                                jCheckBox2.setSelected(true);
+                            }
+                            if(parca[1].contains("O")){
+                                jCheckBox4.setSelected(true);
+                            }
+                            if(parca[1].contains("AB")){
+                                jCheckBox3.setSelected(true);
+                            }
+                            if(parca[1].contains("Rh+")){
+                                jCheckBox5.setSelected(true);
+                            }
+                            if(parca[1].contains("Rh-")){
+                                jCheckBox6.setSelected(true);
+                            }
+                            break;
+                        case "Ilgi":
+                            int seciler[]= new int[parca.length-1];
+                            for(int i = 1; i < parca.length; i++)
+                                seciler[i-1] = Integer.parseInt(parca[i]);
+                            jList1.setSelectedIndices(seciler);
+                            break;
+                        case "Durum":
+                            if (parca[1].equals("1")){
+                              jRadioButton1.setSelected(true);
+                            }  
+                            else
+                                jRadioButton2.setSelected(true);
+                            break;
+                        case "Il":
+                            jComboBox1.setSelectedIndex(Integer.parseInt(parca[1]));
+                            break;
+                        case "Ilce":
+                            jComboBox2.setSelectedIndex(Integer.parseInt(parca[1]));
+                            break;    
+                    }
+                    line =br.readLine();
+                    
+                }
+                br.close();
+                
+            } catch (IOException ex) {
+                Logger.getLogger(fenetre1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     private void kaydet(){
         Ad=jTextField1.getText();
         Soyad=jTextField2.getText();
@@ -782,6 +957,7 @@ public class fenetre1 extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
@@ -799,6 +975,7 @@ public class fenetre1 extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
