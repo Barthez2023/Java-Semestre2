@@ -83,6 +83,7 @@ L'ajout de cette bibliotheque nous permet de manipuler les fichier exceld e la m
         cell8.setCellValue("Adress     ");          // idem colonne 8
         cell9.setCellValue("Ilgi     ");            // idem colonne 9
 
+<<<<<<< HEAD
 et ainsi de suite on creer une ligne apres on creer une colonne et on ajoute des elemnts aux colonnes.
 
 
@@ -95,5 +96,9 @@ jFileChooser1.setCurrentDirectory(new File("C:\\Users\\PC\\Desktop\\github1\\Jav
 }
 et boutton Ac qui permet de recupere les donnes dans ce fichier de leurs remettre a leur differentes place dans la feuille d'enreigistrement
 le boutton Cikis qui permet de fermer la fenetre d'enreigistrement
+
+
+
+# j'ai des difficultes a faire des push dans mon github  
         
         

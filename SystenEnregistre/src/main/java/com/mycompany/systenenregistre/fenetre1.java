@@ -801,6 +801,7 @@ public class fenetre1 extends javax.swing.JFrame {
                 String line =br.readLine();
                 while(line!=null){
                     String[] parca=line.split("//");
+                    
                     switch(parca[0]){
                         case "Ad":
                             jTextField1.setText(parca[1]);
