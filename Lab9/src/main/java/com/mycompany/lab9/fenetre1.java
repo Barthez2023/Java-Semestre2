@@ -5,9 +5,11 @@
 package com.mycompany.lab9;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -172,6 +174,11 @@ public class fenetre1 extends javax.swing.JFrame {
         );
 
         jButton2.setText("Sepete Onayla");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Dosya");
 
@@ -197,7 +204,7 @@ public class fenetre1 extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addGap(101, 101, 101)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -239,7 +246,7 @@ public class fenetre1 extends javax.swing.JFrame {
                     line=br.readLine();
                 }
                 br.close();
-                //jComboBox1.setModel(model1);  a revoir
+                //jComboBox1.setModel(model1);  a revoir   
                 int secilikod=jComboBox1.getSelectedIndex();
                 String sonuc=""+prix[secilikod];
                 jTextField1.setText(sonuc);
@@ -264,13 +271,36 @@ public class fenetre1 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         model=new DefaultListModel();
+        double qunatite = Integer.parseInt(jTextField2.getText())*Integer.parseInt(jTextField1.getText());
+        if(jCheckBox1.isSelected()){
+           qunatite=qunatite+qunatite*0.2; 
+        }
         for(int i=0;i<jList1.getModel().getSize();i++){
             model.addElement(jList1.getModel().getElementAt(i));
         }
-        String car=jComboBox1.getSelectedItem()+" "+jTextField1.getText();
+        String car="Model: "+jComboBox1.getSelectedItem()+" Prix unitaire: "+jTextField1.getText()+" Le prix total: "+qunatite;
         model.addElement(car);
         jList1.setModel(model);
+        JOptionPane.showMessageDialog(this, "Commande Enregisté", "Etat de la commande", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+                FileWriter fr= new FileWriter("commande.txt",false);
+                BufferedWriter br = new BufferedWriter(fr);
+                // Écriture des éléments du modèle
+                for (int i = 0; i < model.getSize(); i++) {
+                    br.write(model.getElementAt(i).toString());
+                    br.newLine(); // Saut de ligne après chaque élément
+                }
+                br.close();
+                JOptionPane.showMessageDialog(this, "Commande Terminer", "Etat de la commande", JOptionPane.INFORMATION_MESSAGE);
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Fichier Non trouver", "Recherche du Fichier", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Ouverturer refuse", "overture du Fichier", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
