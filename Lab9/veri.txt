@@ -1,0 +1,8 @@
+Peugeot,25000
+Renault,85700
+Citroen,95000
+Volkswagen,59720
+Mercedes,50900
+BMW,25800
+Audi,89000
+Dacia,64000
