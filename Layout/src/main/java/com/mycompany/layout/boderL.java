@@ -77,7 +77,7 @@ public class boderL {
         
         
         //GridLayout
-        frame.setLayout(new GridLayout(3,3));
+        /*frame.setLayout(new GridLayout(3,3));
         frame.add(new JButton("1"));
         frame.add(new JButton("2"));
         frame.add(new JButton("3"));
@@ -86,7 +86,40 @@ public class boderL {
         frame.add(new JButton("6"));
         frame.add(new JButton("7"));
         frame.add(new JButton("8"));
-        frame.add(new JButton("9"));
+        frame.add(new JButton("9"));*/
+        
+        //representation
+        
+        frame.setLayout(new BorderLayout());
+        String ligne="KUZEY,5,GUNEY,2,MERKEZ,3,BATI,0,DOGU,4";
+        String parca[]=ligne.split(",");
+        int k=0;
+        if(parca[k].equals("KUZEY")){
+           JButton but =new JButton(parca[k+1]);
+           frame.add(but,BorderLayout.PAGE_START);
+           k=k+2;
+        }
+        if(parca[k].equals("GUNEY")){
+           JButton but =new JButton(parca[k+1]);
+           frame.add(but,BorderLayout.PAGE_END);
+           k=k+2;
+        }
+        if(parca[k].equals("MERKEZ")){
+           JButton but =new JButton(parca[k+1]);
+           frame.add(but,BorderLayout.CENTER);
+           k=k+2;
+        }
+        if(parca[k].equals("BATI")){
+           JButton but =new JButton(parca[k+1]);
+           frame.add(but,BorderLayout.WEST);
+           k=k+2;
+        }
+        if(parca[k].equals("DOGU")){
+           JButton but =new JButton(parca[k+1]);
+           frame.add(but,BorderLayout.EAST);
+           k=k+2;
+        }
+        
         
         
        frame.setVisible(true);
