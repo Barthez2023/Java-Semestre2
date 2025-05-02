@@ -22,10 +22,19 @@ import javax.swing.*;
  * @author PC
  */
 public class Calcul{
-    double operande1;
-    double operande2;
+    double number1;
+    double number2;
+    String operande;
     double result;
-    String cal;
+    JLabel resultat;
+    private void Enter_number(String s){
+        try {
+            int valeur = Integer.parseInt(s);
+            String sol =resultat.getText() + s;
+            resultat.setText(sol);
+        } catch (NumberFormatException e) {}
+        
+    }
     public Calcul(){
         JFrame frame=new JFrame("Calculatrice");
         frame.setLayout(new BorderLayout() );
@@ -33,12 +42,16 @@ public class Calcul{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
         JPanel resultpanel=new JPanel();
-        resultpanel.setBackground(Color.LIGHT_GRAY);
         resultpanel.setLayout(new BorderLayout(15,5));
         resultpanel.setPreferredSize(new Dimension(400, 50));
-        JLabel resultat=new JLabel();
+        resultat =new JLabel();
+        resultat.setOpaque(true);
+        resultat.setBackground(Color.white);
+        resultat.setSize(new Dimension(400,50));
+        resultat.setBorder(null);
         resultat.setFont(new Font("Arial",Font.BOLD, 20));
-        resultpanel.add(resultat,BorderLayout.EAST);
+        
+        resultpanel.add(resultat,BorderLayout.CENTER);
         frame.add(resultpanel,BorderLayout.NORTH);
         
         
@@ -69,76 +82,75 @@ public class Calcul{
                     button.addActionListener(new ActionListener(){
                          public void actionPerformed(ActionEvent evt){
                             JButton but= (JButton)evt.getSource(); 
+                            Enter_number(but.getText());
+                            
+                            if(but.getText().equals(".")){
+                                if(!resultat.getText().contains(".")){
+                                    resultat.setText(resultat.getText()+".");
+                                }
+                            }
+                            if(but.getText().equals("C/AC")){
+                                resultat.setText("");
+                            }
+                            if(but.getText().equals("Del")){
+                                String sback;
+                                if(resultat.getText().length()>0){
+                                    StringBuilder sb =new StringBuilder(resultat.getText());
+                                    sb.deleteCharAt(resultat.getText().length()-1);
+                                    sback=sb.toString();
+                                    resultat.setText(sback);
+                                }
+                            }
+                            if(but.getText().equals("Bck")){
+                                resultat.setText(String.valueOf(result));
+                            }
+                            if(but.getText().equals("*")){
+                                number1=Double.parseDouble(resultat.getText());
+                                resultat.setText("");
+                                operande="*";
+                            }
+                            if(but.getText().equals("-")){
+                                number1=Double.parseDouble(resultat.getText());
+                                resultat.setText("");
+                                operande="-";
+                            }
+                            if(but.getText().equals("+")){
+                                number1=Double.parseDouble(resultat.getText());
+                                resultat.setText("");
+                                operande="+";
+                            }
                             if(but.getText().equals("/")){
-                                result=operande1/operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
+                                number1=Double.parseDouble(resultat.getText());
+                                resultat.setText("");
+                                operande="/";
                             }
-                            else if(but.getText().equals("*")){
-                                result=operande1*operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
+                            
+                            if(but.getText().equals("=") && operande.equals("*") ){
+                                number2=Double.parseDouble(resultat.getText());
+                                result=number1*number2;
+                                String reslut1=result+"";
+                                resultat.setText(reslut1);
                             }
-                            else if(but.getText().equals("-")){
-                                result=operande1-operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
+                            if(but.getText().equals("=") && operande.equals("+") ){
+                                number2=Double.parseDouble(resultat.getText());
+                                result=number1+number2;
+                                String reslut1=result+"";
+                                resultat.setText(reslut1);
                             }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
+                            if(but.getText().equals("=") && operande.equals("-") ){
+                                number2=Double.parseDouble(resultat.getText());
+                                result=number1-number2;
+                                String reslut1=result+"";
+                                resultat.setText(reslut1);
                             }
-                            /*else if(but.getText().equals("1")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
+                            if(but.getText().equals("=") && operande.equals("/") ){
+                                number2=Double.parseDouble(resultat.getText());
+                                result=number1/number2;
+                                String reslut1=result+"";
+                                resultat.setText(reslut1);
                             }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }
-                            else if(but.getText().equals("+")){
-                                result=operande1+operande2;
-                                cal=""+result;
-                                resultat.setText(cal);
-                            }*/
+                            
+                            
                         }
                     
                     
