@@ -1,0 +1,2 @@
+Model: Volkswagen Prix unitaire: 59720 Le prix total: 1433280.0
+Model: BMW Prix unitaire: 25800 Le prix total: 309600.0
